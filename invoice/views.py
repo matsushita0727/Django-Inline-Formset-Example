@@ -11,10 +11,11 @@ from pure_pagination.mixins import PaginationMixin
 from .filters import InvoiceFilter
 from .forms import InvoiceForm, InvoiceDetailFormSet
 from .models import Invoice
+from .models import InvoiceDetail
 
 
-class FormsetMixin(object):
-    object = None
+class FormsetMixin(object): #inline-formsetsに対応する登録更新処理機能
+    object = None #Noneは未定義を表す引数
 
     def get(self, request, *args, **kwargs):
         if getattr(self, 'is_update_view', False):
@@ -64,7 +65,7 @@ class FormsetMixin(object):
         return self.render_to_response(self.get_context_data(form=form, formset=formset))
 
 
-class InvoiceMixin(object):
+class InvoiceMixin(object): #新規登録・更新処理
     def form_valid(self, form, formset):
 
         # formset.saveでインスタンスを取得できるように、既存データに変更が無くても更新対象となるようにする

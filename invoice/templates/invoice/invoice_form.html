@@ -20,7 +20,7 @@
                 <div>
                     {% bootstrap_formset_errors formset %}
                 </div>
-                <form method="post" class="form" id="myform">
+                <form method="post" class="form" id="myform" >
                     {% csrf_token %}
                     {{ formset.management_form }}
                     {% bootstrap_field form.customer show_label=False %}
@@ -50,6 +50,8 @@
                         <a class="btn btn-outline-secondary command" href="{% url 'index' %}">戻る</a>
                     {% endif %}
                     <a class="btn btn-outline-secondary command save" href="#">登録</a>
+                    
+                    </form>
                 </div>
             </div>
         </div>
